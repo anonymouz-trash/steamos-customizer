@@ -1,0 +1,18 @@
+# office suite
+kaddressbook
+korganizer
+kdepim-addons
+
+# multimedia
+picard
+
+# picture editor
+gimp
+gimp-help-de
+
+# system
+kvantum
+
+# VPN
+iptables-nft
+wireguard-tools
