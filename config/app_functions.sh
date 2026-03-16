@@ -52,14 +52,16 @@ draw_menu() {
   1) Update SteamOS
   2) Update Flatpaks
 
-  3) (Re-)Enable Pacman
-  4) Install Pacman packages
+  3) Enable "sudo"
+  4) (Re-)Enable Pacman
+  5) Install Pacman packages
+  6) Install Flatpak packages
 
-  5) Install iptables ruleset (for Ethernet, WLAN, Wireguard & Qemu)
-  6) Copy Wireguard start script
+  7) Install iptables ruleset (for Ethernet, WLAN, Wireguard & Qemu)
+  8) Copy Wireguard start script
 
-  7) SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
-  8) KDE Themeing section
+  9) SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
+ 10) KDE Themeing section
 
 
   q) Exit

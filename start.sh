@@ -50,18 +50,24 @@ while true; do
             update_flatpaks
             ;;
         3)
-            opt_enable-pacman
+            passwd
             ;;
         4)
-            opt_packages
+            opt_enable-pacman
             ;;
         5)
-            opt_iptaples
+            opt_packages
             ;;
         6)
-            opt_wireguard
+            opt_flatpaks
             ;;
         7)
+            opt_iptaples
+            ;;
+        8)
+            opt_wireguard
+            ;;
+        9)
             clear
             draw_logo
             draw_plugin_menu
@@ -90,7 +96,7 @@ while true; do
                     ;;
             esac
             ;;
-        8)
+        10)
             clear
             draw_logo
             draw_theme_menu

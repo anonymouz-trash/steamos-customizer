@@ -15,6 +15,21 @@ opt_packages(){
     read -p "Press any key to resume ..."
 }
 
+opt_flatpaks(){
+    clear
+    echo -e "\n${white}[+] ${blue}Installing additional flatpak packages...${nocolor}\n"
+    sleep 2
+
+    read -p 'Do you want to edit flatpak package list before installing? [y/N] ' input
+    if [[ ${input} == "y" ]]; then
+        nano ./assets/opt_pkglist-flatpak
+    fi
+    flatpak install - < <(grep -Ev '^[[:space:]]*(#|$)' ./assets/opt_pkglist-flatpak)
+
+    echo
+    read -p "Press any key to resume ..."
+}
+
 opt_nsl(){
     clear
     echo -e "\n${white}[+] ${blue}Launch NonSteamLaunchers On Steam Deck...${nocolor}\n"
