@@ -52,7 +52,7 @@ draw_menu() {
   1) Update SteamOS
   2) Update Flatpaks
 
-  3) Enable "sudo"
+  3) Enable (or change) the "sudo" password
   4) (Re-)Enable Pacman
   5) Install Pacman packages
   6) Install Flatpak packages
@@ -63,6 +63,7 @@ draw_menu() {
   9) SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
  10) KDE Themeing section
 
+ 11) Clean SteamOS (unused pacman + flatpak cache, apps, etc.)
 
   q) Exit
 

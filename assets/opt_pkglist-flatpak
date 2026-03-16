@@ -1,25 +1,24 @@
 # games
-lutris
+net.lutris.Lutris
 
 # internet
-zen-browser
+app.zen_browser.zen
 
 # office suite
-libreoffice
+org.libreoffice.LibreOffice
 
 # multimedia
-elisa
-dragon
-plex
-puddletag
-spotify
+org.kde.elisa
+org.kde.dragonplayer
+tv.plex.PlexDesktop
+net.puddletag.puddletag
+com.spotify.Client
 
 # picture editor
-gimp
-gimp-help-de
+org.gimp.GIMP
 
 # system
-flatseal
-gearlever
-remmina
-warehouse
+com.github.tchx84.Flatseal
+it.mijorus.gearlever
+org.remmina.Remmina
+io.github.flattool.Warehouse

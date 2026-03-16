@@ -3,7 +3,7 @@
 cust_reversal(){
     clear
     echo -e "\n${white}[+] ${blue}Installing or updating Reversal icon theme...${nocolor}\n"
-	sleep 2
+    sleep 2
     cd ~/.cache/steamos-customizer
     if [ -d "$HOME/.local/share/icons/Reversal" ]; then
         read -p "Do you want to (r)emove or just update it? [r/U] " input
@@ -39,10 +39,10 @@ cust_reversal(){
 cust_gtk_lavanda(){
     clear
     echo -e "\n${white}[+] ${blue}Installing or updating Lavanda GTK theme...${nocolor}\n"
-	sleep 2
-	cd ~/.cache/steamos-customizer
+    sleep 2
+    cd ~/.cache/steamos-customizer
 
-	# Check if WhiteSur got pulled and is up to date
+    # Check if WhiteSur got pulled and is up to date
     if [ -d "Lavanda-gtk-theme" ]; then
         read -p "Do you want to (r)emove or just update it? [r/U] " input
         if [[ ${input} == "r" ]]; then

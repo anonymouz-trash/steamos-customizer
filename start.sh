@@ -50,7 +50,7 @@ while true; do
             update_flatpaks
             ;;
         3)
-            passwd
+            enable_sudo
             ;;
         4)
             opt_enable-pacman
@@ -142,6 +142,9 @@ while true; do
                     sleep 1
                     ;;
             esac
+            ;;
+        11)
+            clean_steamos
             ;;
         q)
             echo "Bye"
