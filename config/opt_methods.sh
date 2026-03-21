@@ -58,10 +58,16 @@ install_emudeck(){
     clear
     echo -e "\n${white}[+] ${blue}Install EmuDeck...${nocolor}\n"
     sleep 2
-    cd ~/.cache/steamos-customizer
-    sh -c 'curl -L https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash'
-    echo
-    cd ${pwd}
+    if [ -f "$HOME/Applications/EmuDeck.AppImage" ]; then
+        echo -e "\n${white}[+] ${blue}EmuDeck already installed, starting it...${nocolor}\n"
+        $HOME/Applications/EmuDeck.AppImage
+        sleep 2
+    else
+        cd ~/.cache/steamos-customizer
+        sh -c 'curl -L https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash'
+        echo
+        cd ${pwd}
+    fi
     read -p "Press any key to resume ..."
 }
 
