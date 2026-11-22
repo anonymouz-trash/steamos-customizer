@@ -210,6 +210,7 @@ cust_gtk_whitesur(){
         fi
     fi
     echo
+    cd ${pwd}
     read -p "Press any key to resume ..."
 }
 
@@ -243,6 +244,7 @@ cust_kde_whitesur(){
         fi
     fi
     echo
+    cd ${pwd}
     read -p "Press any key to resume ..."
 }
 
@@ -265,9 +267,10 @@ cust_bibata(){
     if ! [ -f Bibata.tar.xz ]; then
         wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata.tar.xz
     fi
-    tar -xvf Bibata.tar.gz
+    tar -xvf Bibata.tar.xz
     mv Bibata-* ~/.local/share/icons/
     echo
+    cd ${pwd}
     read -p "Press any key to resume ..."
 }
 
@@ -307,5 +310,6 @@ cust_fastfetch(){
         fi
     fi
     echo
+    cd ${pwd}
     read -p "Press any key to resume ..."
 }

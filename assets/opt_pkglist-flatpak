@@ -2,7 +2,7 @@
 net.lutris.Lutris
 
 # internet
-app.zen_browser.zen
+org.chromium.Chromium
 
 # office suite
 org.libreoffice.LibreOffice
@@ -10,7 +10,7 @@ org.libreoffice.LibreOffice
 # multimedia
 org.kde.elisa
 org.kde.dragonplayer
-tv.plex.PlexDesktop
+
 net.puddletag.puddletag
 com.spotify.Client
 
@@ -18,6 +18,7 @@ com.spotify.Client
 org.gimp.GIMP
 
 # system
+io.github.kolunmi.Bazaar
 com.github.tchx84.Flatseal
 it.mijorus.gearlever
 org.remmina.Remmina
