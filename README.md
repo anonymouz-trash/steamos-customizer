@@ -32,7 +32,10 @@ Just clone the repo and run it like below at any preferred location you want.
 # Changelog
 > Rolling Release! I'll just document the latest changes. You'll find additional info in commits section.
 
-* Initial Release
+* UPDATE: Replace iptables ruleset with firewall-cmd for more compatibility
+* FIX:    Flatpak installation routine (use single words or app ids)
+* UPDATE: Replacing wireguard routine by adding wg0.conf to NetworkManager with the same script functionality for use as hotkey
+* ADD:    Add GyroDSU server installation for the Steam Deck & Steam Controller (install all 3 services if you have a Steam Controller)
 
 # Screenshots
 ![SteamOS Customizer - Main Menu](https://github.com/anonymouz-trash/steamos-customizer/blob/main/screenshots/mainmenu.png?raw=true)
