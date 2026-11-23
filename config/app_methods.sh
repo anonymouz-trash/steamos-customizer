@@ -1,44 +1,37 @@
 #!/usr/bin/env bash
 
 update_steamos(){
-    clear
     echo -e "\n${white}[+] ${blue}Running SteamOS updates...${nocolor}\n"
-    sleep 2
     steamos-update
     echo
     read -p "Press any key to resume ..."
 }
 
 update_flatpaks(){
-    clear
     echo -e "\n${white}[+] ${blue}Running Flatpak updates...${nocolor}\n"
-    sleep 2
     flatpak update
     echo
     read -p "Press any key to resume ..."
 }
 
 update_pacman(){
-    clear
     echo -e "\n${white}[+] ${blue}Running Pacman updates...${nocolor}\n"
-    sleep 2
     sudo pacman -Syu
     echo
     read -p "Press any key to resume ..."
 }
 
 clean_steamos(){
-    clear
 	echo -e "\n${white}[+] ${blue}Cleaning SteamOS...${nocolor}\n"
     cache_size=$(du -sh ~/.cache)
     paccache_size=$(du -sh /var/cache/pacman/pkg)
     flatpak_size=$(du -sh ~/.cache/flatpak)
-    sleep 2
+
 	echo -e "${cyan} Size of current user's cache: ${nocolor}  ${cache_size}\n"
 	echo -e "${cyan} Size of pacman cache:         ${nocolor}  ${paccache_size}\n"
 	echo -e "${cyan} Size of flatpak cache:        ${nocolor}  ${flatpak_size}\n"
     echo
-    read -p 'Do you want to clear all (y) cached pacman packages or just the ones that are not installed (N)? [y/N] ' input
+    read -p 'Do you want to  all (y) cached pacman packages or just the ones that are not installed (N)? [y/N] ' input
     if [[ ${input} == "y" ]]; then
         sudo pacman -Scc
     else
@@ -63,7 +56,7 @@ clean_steamos(){
     if [[ ${input} == "y" ]]; then
         rm -rfv ~/.cache/*
     fi
-    clear
+
     cache_size=$(du -sh ~/.cache)
     paccache_size=$(du -sh /var/cache/pacman/pkg)
     flatpak_size=$(du -sh ~/.cache/flatpak)
@@ -77,9 +70,7 @@ clean_steamos(){
 }
 
 enable_sudo(){
-    clear
     echo -e "\n${white}[+] ${blue}Enable (or change) the 'sudo' password...${nocolor}\n"
-    sleep 2
     passwd
     echo
     read -p "Press any key to resume ..."

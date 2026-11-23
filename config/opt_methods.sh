@@ -1,25 +1,18 @@
 #!/usr/bin/env bash
 
 opt_packages(){
-    clear
     echo -e "\n${white}[+] ${blue}Installing additional packages...${nocolor}\n"
-    sleep 2
-
     read -p 'Do you want to edit pacman package list before installing? [y/N] ' input
     if [[ ${input} == "y" ]]; then
         nano ./assets/opt_pkglist-pacman
     fi
     sudo pacman -S --needed - < <(grep -Ev '^[[:space:]]*(#|$)' ./assets/opt_pkglist-pacman)
-
     echo
     read -p "Press any key to resume ..."
 }
 
 opt_flatpaks(){
-    clear
     echo -e "\n${white}[+] ${blue}Installing additional flatpak packages...${nocolor}\n"
-    sleep 2
-
     read -p 'Do you want to edit flatpak package list before installing? [y/N] ' input
     if [[ ${input} == "y" ]]; then
         nano ./assets/opt_pkglist-flatpak
@@ -34,7 +27,6 @@ opt_flatpaks(){
         flatpak remote-ls --user --app --columns=application flathub 2>/dev/null \
             | grep -i -m1 -E "\.${name}\$"
     }
-
     while read -r app; do
         id="$(resolve_flatpak_id "$app")"
         if [[ -z "$id" ]]; then
@@ -48,9 +40,7 @@ opt_flatpaks(){
 }
 
 install_nsl(){
-    clear
     echo -e "\n${white}[+] ${blue}Install NonSteamLaunchers On Steam Deck...${nocolor}\n"
-    sleep 2
     cd ~/.cache/steamos-customizer
     /bin/bash -c 'export logged_in_home=$(eval echo "~$(whoami)"); curl -Ls https://raw.githubusercontent.com/moraroy/NonSteamLaunchers-On-Steam-Deck/main/NonSteamLaunchers.sh | nohup /bin/bash'
     cd ${pwd}
@@ -59,9 +49,7 @@ install_nsl(){
 }
 
 install_decky(){
-    clear
     echo -e "\n${white}[+] ${blue}Install Decky Loader...${nocolor}\n"
-    sleep 2
     cd ~/.cache/steamos-customizer
     sh -c 'rm -f /tmp/user_install_script.sh; if curl -S -s -L -O --output-dir /tmp/ --connect-timeout 60 https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/user_install_script.sh; then bash /tmp/user_install_script.sh; else echo "Something went wrong, please report this if it is a bug"; read; fi'
     echo
@@ -70,13 +58,10 @@ install_decky(){
 }
 
 install_emudeck(){
-    clear
     echo -e "\n${white}[+] ${blue}Install EmuDeck...${nocolor}\n"
-    sleep 2
     if [ -f "$HOME/Applications/EmuDeck.AppImage" ]; then
         echo -e "\n${white}[+] ${blue}EmuDeck already installed, starting it...${nocolor}\n"
         $HOME/Applications/EmuDeck.AppImage
-        sleep 2
     else
         cd ~/.cache/steamos-customizer
         sh -c 'curl -L https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash'
@@ -87,9 +72,7 @@ install_emudeck(){
 }
 
 opt_wireguard(){
-    clear
-    echo -e "\n${white}[+] ${blue}Copy wireguard activate/deactivate script in /usr/local/sbin/wireguard-vpn${nocolor}\n"
-    echo -e "${white}    Don't forget to put your wireguard profile in /etc/wireguard as wg0.conf${nocolor}\n"
+    echo -e "\n${white}[+] ${blue}Copy wireguard activate/deactivate script to ${apphome}/local/bin/wireguard-vpn${nocolor}\n"
     if [ -f "${apphome}/.local/bin/wireguard-vpn" ]; then
         read -r -p 'WireGuard script already exists! Do you want to remove it? [y/N] ' input
         if [[ "${input}" == "y" || "${input}" == "Y" ]]; then
@@ -97,7 +80,6 @@ opt_wireguard(){
             if nmcli -t -f NAME connection show --active | grep -qxF "WireGuard VPN"; then
                 nmcli connection down id "WireGuard VPN"
             fi
-
             # Remove the NetworkManager connection (only if it exists)
             if nmcli -t -f NAME connection show | grep -qxF "WireGuard VPN"; then
                 nmcli connection delete id "WireGuard VPN"
@@ -105,10 +87,8 @@ opt_wireguard(){
             else
                 echo -e "${white}[+] ${blue}No NetworkManager connection named 'WireGuard VPN' found${nocolor}"
             fi
-
             # Remove the toggle script
             rm -v "${apphome}/.local/bin/wireguard-vpn"
-
             # Optionally remove the PATH line that the installer added to .bashrc
             path_line='export PATH="$HOME/.local/bin:$PATH"'
             if grep -qxF "${path_line}" "${apphome}/.bashrc" 2>/dev/null; then
@@ -146,31 +126,24 @@ opt_wireguard(){
 }
 
 opt_firewall(){
-    clear
     echo -e "\n${white}[+] ${blue}Add preconfigured iptables ruleset script to /etc/iptables...${nocolor}\n"
-
     FW="sudo firewall-cmd --permanent"
-
     # --- Default zone (replaces INPUT policy DROP) ---------------------------
     # All interfaces without an explicit zone (wlan0, enp2s0) land in "drop":
     # incoming traffic is dropped, replies to outgoing connections are still
     # allowed via connection tracking (ESTABLISHED,RELATED).
     $FW --set-default-zone=drop
-
     # --- WireGuard (replaces: -A INPUT/OUTPUT -i/-o wg0 -j ACCEPT) -----------
     $FW --new-zone=vpn
     $FW --zone=vpn --set-target=ACCEPT
     $FW --zone=vpn --add-interface=wg0
-
     firewall-cmd --reload
     echo
     read -p "Press any key to resume ..."
 }
 
 opt_enable-pacman(){
-    clear
     echo -e "\n${white}[+] ${blue}Enabling pacman ${purple}system-wide normally${blue}...${nocolor}\n"
-    sleep 2
     sudo steamos-readonly disable
     if [ -d /etc/pacman.d/gnupg ]; then
         sudo rm -rfv /etc/pacman.d/gnupg
@@ -185,27 +158,21 @@ opt_enable-pacman(){
 }
 
 opt_gyrodsu-steamdeck(){
-    clear
     echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Deck${blue}...${nocolor}\n"
-    sleep 2
     bash <(curl -sL https://raw.githubusercontent.com/kmicki/SteamDeckGyroDSU/master/pkg/update.sh)
     echo
     read -p "Press any key to resume ..."
 }
 
 opt_gyrodsu-steamcontroller(){
-    clear
     echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Controller${blue}...${nocolor}\n"
-    sleep 2
     bash <(curl -sL https://raw.githubusercontent.com/dylangmarinus-stack/Steam-Controller-GyroDSU/main/pkg/install.sh)
     echo
     read -p "Press any key to resume ..."
 }
 
 opt_gyrodsu-combined(){
-    clear
     echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Controller${blue}...${nocolor}\n"
-    sleep 2
     cd ~/.cache/steamos-customizer
     git clone https://github.com/korph-jz/steamdeck-dsu-combiner.git
     cd steamdeck-dsu-combiner
