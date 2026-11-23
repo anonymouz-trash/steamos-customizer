@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 update_steamos(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Running SteamOS updates...${nocolor}\n"
     steamos-update
     echo
@@ -8,6 +10,8 @@ update_steamos(){
 }
 
 update_flatpaks(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Running Flatpak updates...${nocolor}\n"
     flatpak update
     echo
@@ -15,6 +19,8 @@ update_flatpaks(){
 }
 
 update_pacman(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Running Pacman updates...${nocolor}\n"
     sudo pacman -Syu
     echo
@@ -22,7 +28,9 @@ update_pacman(){
 }
 
 clean_steamos(){
-	echo -e "\n${white}[+] ${blue}Cleaning SteamOS...${nocolor}\n"
+    clear
+    draw_logo
+    echo -e "\n${white}[+] ${blue}Cleaning SteamOS...${nocolor}\n"
     cache_size=$(du -sh ~/.cache)
     paccache_size=$(du -sh /var/cache/pacman/pkg)
     flatpak_size=$(du -sh ~/.cache/flatpak)
@@ -70,6 +78,8 @@ clean_steamos(){
 }
 
 enable_sudo(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Enable (or change) the 'sudo' password...${nocolor}\n"
     passwd
     echo

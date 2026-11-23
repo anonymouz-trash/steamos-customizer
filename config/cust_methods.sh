@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 cust_reversal(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating Reversal icon theme...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     if [ -d "$HOME/.local/share/icons/Reversal" ]; then
@@ -35,6 +37,8 @@ cust_reversal(){
 }
 
 cust_gtk_lavanda(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating Lavanda GTK theme...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     # Check if WhiteSur got pulled and is up to date
@@ -68,9 +72,11 @@ cust_gtk_lavanda(){
 }
 
 cust_kde_lavanda(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating Lavanda KDE theme...${nocolor}\n"
-	cd ~/.cache/steamos-customizer
-	# Check if WhiteSur got pulled and is up to date
+    cd ~/.cache/steamos-customizer
+    # Check if WhiteSur got pulled and is up to date
     if [ -d "Lavanda-kde" ]; then
         read -p "Do you want to (r)emove or just update it? [r/U] " input
         if [[ ${input} == "r" ]]; then
@@ -100,6 +106,8 @@ cust_kde_lavanda(){
 }
 
 cust_gtk_layan(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating Layan GTK theme...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     if [ -d "Layan-gtk-theme" ]; then
@@ -132,8 +140,10 @@ cust_gtk_layan(){
 }
 
 cust_kde_layan(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating Layan KDE theme...${nocolor}\n"
-	cd ~/.cache/steamos-customizer
+    cd ~/.cache/steamos-customizer
     if [ -d "Layan-kde" ]; then
         read -p "Do you want to (r)emove or just update it? [r/U] " input
         if [[ ${input} == "r" ]]; then
@@ -164,6 +174,8 @@ cust_kde_layan(){
 }
 
 cust_gtk_whitesur(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating WhiteSur GTK theme...${nocolor}"
     if [[ ${de,,} =~ "gnome" ]]; then
         echo -e "\n${white}[+] ${blue}!!!${nocolor} Please use background pictures without spaces in the filename ${blue}!!!${nocolor}\n"
@@ -199,6 +211,8 @@ cust_gtk_whitesur(){
 }
 
 cust_kde_whitesur(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating WhiteSur KDE theme...${nocolor}"
     cd ~/.cache/steamos-customizer
     if [ -d "WhiteSur-kde" ]; then
@@ -231,6 +245,8 @@ cust_kde_whitesur(){
 }
 
 cust_bibata(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing or updating Bibata cursor theme...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     if [ -d "Bibata" ]; then

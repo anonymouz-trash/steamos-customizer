@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 opt_packages(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing additional packages...${nocolor}\n"
     read -p 'Do you want to edit pacman package list before installing? [y/N] ' input
     if [[ ${input} == "y" ]]; then
@@ -12,6 +14,8 @@ opt_packages(){
 }
 
 opt_flatpaks(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Installing additional flatpak packages...${nocolor}\n"
     read -p 'Do you want to edit flatpak package list before installing? [y/N] ' input
     if [[ ${input} == "y" ]]; then
@@ -40,6 +44,8 @@ opt_flatpaks(){
 }
 
 install_nsl(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Install NonSteamLaunchers On Steam Deck...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     /bin/bash -c 'export logged_in_home=$(eval echo "~$(whoami)"); curl -Ls https://raw.githubusercontent.com/moraroy/NonSteamLaunchers-On-Steam-Deck/main/NonSteamLaunchers.sh | nohup /bin/bash'
@@ -49,6 +55,8 @@ install_nsl(){
 }
 
 install_decky(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Install Decky Loader...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     sh -c 'rm -f /tmp/user_install_script.sh; if curl -S -s -L -O --output-dir /tmp/ --connect-timeout 60 https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/user_install_script.sh; then bash /tmp/user_install_script.sh; else echo "Something went wrong, please report this if it is a bug"; read; fi'
@@ -58,6 +66,8 @@ install_decky(){
 }
 
 install_emudeck(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Install EmuDeck...${nocolor}\n"
     if [ -f "$HOME/Applications/EmuDeck.AppImage" ]; then
         echo -e "\n${white}[+] ${blue}EmuDeck already installed, starting it...${nocolor}\n"
@@ -72,6 +82,8 @@ install_emudeck(){
 }
 
 opt_wireguard(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Copy wireguard activate/deactivate script to ${apphome}/local/bin/wireguard-vpn${nocolor}\n"
     if [ -f "${apphome}/.local/bin/wireguard-vpn" ]; then
         read -r -p 'WireGuard script already exists! Do you want to remove it? [y/N] ' input
@@ -126,6 +138,8 @@ opt_wireguard(){
 }
 
 opt_firewall(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Add preconfigured iptables ruleset script to /etc/iptables...${nocolor}\n"
     FW="sudo firewall-cmd --permanent"
     # --- Default zone (replaces INPUT policy DROP) ---------------------------
@@ -143,6 +157,8 @@ opt_firewall(){
 }
 
 opt_enable-pacman(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Enabling pacman ${purple}system-wide normally${blue}...${nocolor}\n"
     sudo steamos-readonly disable
     if [ -d /etc/pacman.d/gnupg ]; then
@@ -158,6 +174,8 @@ opt_enable-pacman(){
 }
 
 opt_gyrodsu-steamdeck(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Deck${blue}...${nocolor}\n"
     bash <(curl -sL https://raw.githubusercontent.com/kmicki/SteamDeckGyroDSU/master/pkg/update.sh)
     echo
@@ -165,6 +183,8 @@ opt_gyrodsu-steamdeck(){
 }
 
 opt_gyrodsu-steamcontroller(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Controller${blue}...${nocolor}\n"
     bash <(curl -sL https://raw.githubusercontent.com/dylangmarinus-stack/Steam-Controller-GyroDSU/main/pkg/install.sh)
     echo
@@ -172,6 +192,8 @@ opt_gyrodsu-steamcontroller(){
 }
 
 opt_gyrodsu-combined(){
+    clear
+    draw_logo
     echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Controller${blue}...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     git clone https://github.com/korph-jz/steamdeck-dsu-combiner.git

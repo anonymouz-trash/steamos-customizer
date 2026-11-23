@@ -60,8 +60,8 @@ draw_menu() {
   7) Install firewall-cmd ruleset (for WLAN & Wireguard)
   8) Add Wireguard config to NetworkManager (+ start/stop script)
 
-  9) SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
- 10) KDE Themeing section
+  9) >> SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
+ 10) >> KDE Themeing section
 
  11) Clean SteamOS (unused pacman + flatpak cache, apps, etc.)
 
