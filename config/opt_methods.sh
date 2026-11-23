@@ -194,11 +194,20 @@ opt_gyrodsu-steamcontroller(){
 opt_gyrodsu-combined(){
     clear
     draw_logo
-    echo -e "\n${white}[+] ${blue}Enabling GyroDSU for ${purple}Steam Controller${blue}...${nocolor}\n"
+    echo -e "\n${white}[+] ${blue}Enabling GyroDSU ${purple}combined services${blue}...${nocolor}\n"
     cd ~/.cache/steamos-customizer
     git clone https://github.com/korph-jz/steamdeck-dsu-combiner.git
     cd steamdeck-dsu-combiner
     ./install.sh
+    echo
+    read -p "Press any key to resume ..."
+}
+
+opt_cryoutilities(){
+    clear
+    draw_logo
+    echo -e "\n${white}[+] Installing CryoUtilities for ${purple}Steam Deck${nocolor}\n"
+    curl https://raw.githubusercontent.com/CryoByte33/steam-deck-utilities/main/install.sh | bash -s --
     echo
     read -p "Press any key to resume ..."
 }

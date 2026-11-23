@@ -79,15 +79,15 @@ draw_theme_menu() {
 
   [ CURSOR ]                        [ GTK ]
 
-    1) Bibata                         4) Lavanda
-                                      5) Layan
-  [ ICON ]                            6) WhiteSur
+    1) Bibata                         3) Lavanda
+                                      4) Layan
+  [ ICON ]                            5) WhiteSur
 
     2) Reversal                     [ KDE ]
 
-                                      7) Lavanda
-                                      8) Layan
-                                      9) WhiteSur
+                                      6) Lavanda
+                                      7) Layan
+                                      8) WhiteSur
 
 
   b) Back
@@ -111,6 +111,7 @@ draw_plugin_menu() {
   5) GyroDSU (Steam Controller)
   6) GyroDSU (Combined Service)
 
+  7) CryoUtilities
 
   b) Back
   q) Exit

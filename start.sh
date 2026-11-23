@@ -43,30 +43,14 @@ while true; do
     read -rp "Choice: " choice
 
     case $choice in
-        1)
-            update_steamos
-            ;;
-        2)
-            update_flatpaks
-            ;;
-        3)
-            enable_sudo
-            ;;
-        4)
-            opt_enable-pacman
-            ;;
-        5)
-            opt_packages
-            ;;
-        6)
-            opt_flatpaks
-            ;;
-        7)
-            opt_firewall
-            ;;
-        8)
-            opt_wireguard
-            ;;
+        1) update_steamos ;;
+        2) update_flatpaks ;;
+        3) enable_sudo ;;
+        4) opt_enable-pacman ;;
+        5) opt_packages ;;
+        6) opt_flatpaks ;;
+        7) opt_firewall ;;
+        8) opt_wireguard ;;
         9)
             clear
             draw_logo
@@ -74,18 +58,14 @@ while true; do
             read -rp "Choice: " choice
 
             case $choice in
-                1)
-                    install_decky
-                    ;;
-                2)
-                    install_emudeck
-                    ;;
-                3)
-                    install_nsl
-                    ;;
-                b)
-                    continue
-                    ;;
+                1) install_decky ;;
+                2) install_emudeck ;;
+                3) install_nsl ;;
+                4) opt_gyrodsu-steamdeck ;;
+                5) opt_gyrodsu-steamcontroller ;;
+                6) opt_gyrodsu-combined ;;
+                7) opt_cryoutilites ;;
+                b) continue ;;
                 q)
                     echo "Bye"
                     exit 0
@@ -103,36 +83,15 @@ while true; do
             read -rp "Choice: " choice
 
             case $choice in
-                1)
-                    cust_bibata
-                    ;;
-                2)
-                    cust_reversal
-                    ;;
-                3)
-                    cust_fastfetch
-                    ;;
-                4)
-                    cust_gtk_lavanda
-                    ;;
-                5)
-                    cust_gtk_layan
-                    ;;
-                6)
-                    cust_gtk_whitesur
-                    ;;
-                7)
-                    cust_kde_lavanda
-                    ;;
-                8)
-                    cust_kde_layan
-                    ;;
-                9)
-                    cust_kde_whitesur
-                    ;;
-                b)
-                    continue
-                    ;;
+                1) cust_bibata ;;
+                2) cust_reversal ;;
+                3) cust_gtk_lavanda ;;
+                4) cust_gtk_layan ;;
+                5) cust_gtk_whitesur ;;
+                6) cust_kde_lavanda ;;
+                7) cust_kde_layan ;;
+                8) cust_kde_whitesur ;;
+                b) continue ;;
                 q)
                     echo "Bye"
                     exit 0
@@ -143,9 +102,7 @@ while true; do
                     ;;
             esac
             ;;
-        11)
-            clean_steamos
-            ;;
+        11) clean_steamos ;;
         q)
             echo "Bye"
             exit 0
