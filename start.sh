@@ -62,7 +62,7 @@ while true; do
             opt_flatpaks
             ;;
         7)
-            opt_iptaples
+            opt_firewall
             ;;
         8)
             opt_wireguard

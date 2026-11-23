@@ -57,8 +57,8 @@ draw_menu() {
   5) Install Pacman packages
   6) Install Flatpak packages
 
-  7) Install iptables ruleset (for Ethernet, WLAN, Wireguard & Qemu)
-  8) Copy Wireguard start script
+  7) Install firewall-cmd ruleset (for WLAN & Wireguard)
+  8) Add Wireguard config to NetworkManager (+ start/stop script)
 
   9) SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
  10) KDE Themeing section
@@ -85,9 +85,9 @@ draw_theme_menu() {
 
     2) Reversal                     [ KDE ]
 
-  [ TERMINAL ]                        7) Lavanda
+                                      7) Lavanda
                                       8) Layan
-    3) Fastfetch                      9) WhiteSur
+                                      9) WhiteSur
 
 
   b) Back
@@ -106,6 +106,10 @@ draw_plugin_menu() {
   1) Decky Loader
   2) EmuDeck
   3) Non-Steam-Launcher
+
+  4) GyroDSU (Steam Deck)
+  5) GyroDSU (Steam Controller)
+  6) GyroDSU (Combined Service)
 
 
   b) Back

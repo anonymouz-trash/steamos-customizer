@@ -1,25 +1,25 @@
 # games
-net.lutris.Lutris
+Lutris
 
 # internet
-org.chromium.Chromium
+Chromium
 
 # office suite
-org.libreoffice.LibreOffice
+LibreOffice
 
 # multimedia
-org.kde.elisa
-org.kde.dragonplayer
-
-net.puddletag.puddletag
-com.spotify.Client
+Elisa
+DragonPlayer
+Mixxx
+Puddletag
+Spotify
 
 # picture editor
-org.gimp.GIMP
+Gimp
 
 # system
-io.github.kolunmi.Bazaar
-com.github.tchx84.Flatseal
-it.mijorus.gearlever
-org.remmina.Remmina
-io.github.flattool.Warehouse
+Bazaar
+Flatseal
+Gearlever
+Remmina
+Warehouse
