@@ -51,20 +51,35 @@ draw_menu() {
 
   1) Update SteamOS
   2) Update Flatpaks
+  3) Clean SteamOS                (unused pacman + flatpak cache, etc.)
 
-  3) Enable (or change) the "sudo" password
-  4) (Re-)Enable Pacman
-  5) Install Pacman packages
-  6) Install Flatpak packages
+  4) >> System section            (Pacman, Flatpak, Wireguard)
+  5) >> SteamOS plugin section    (like Decky Loader, EmuDeck, NSL, ...)
+  6) >> KDE Themeing section
 
-  7) Install firewall-cmd ruleset (for WLAN & Wireguard)
-  8) Add Wireguard config to NetworkManager (+ start/stop script)
 
-  9) >> SteamOS plugin section (like Decky Loader, EmuDeck, NSL, ...)
- 10) >> KDE Themeing section
 
- 11) Clean SteamOS (unused pacman + flatpak cache, apps, etc.)
+  q) Exit
 
+========================================================================
+EOF
+    echo -e "${nocolor}"
+}
+
+draw_system_menu() {
+    echo -e "${white}"
+    cat << "EOF"
+========================================================================
+
+  1) Enable (or change) the "sudo" password
+  2) (Re-)Enable Pacman
+  3) Install Pacman packages
+  4) Install Flatpak packages
+
+  5) Install firewall-cmd ruleset (for WLAN & Wireguard)
+  6) Add Wireguard config to NetworkManager (+ start/stop script)
+
+  b) Back
   q) Exit
 
 ========================================================================

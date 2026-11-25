@@ -45,13 +45,32 @@ while true; do
     case $choice in
         1) update_steamos ;;
         2) update_flatpaks ;;
-        3) enable_sudo ;;
-        4) opt_enable-pacman ;;
-        5) opt_packages ;;
-        6) opt_flatpaks ;;
-        7) opt_firewall ;;
-        8) opt_wireguard ;;
-        9)
+        3) clean_steamos ;;
+        4)
+            clear
+            draw_logo
+            draw_system_menu
+            read -rp "Choice: " choice
+
+            case $choice in
+                1) enable_sudo ;;
+                2) opt_enable-pacman ;;
+                3) opt_packages ;;
+                4) opt_flatpaks ;;
+                5) opt_firewall ;;
+                6) opt_wireguard ;;
+                b) continue ;;
+                q)
+                    echo "Bye"
+                    exit 0
+                    ;;
+                *)
+                    echo "Incorrect choice..."
+                    sleep 1
+                    ;;
+            esac
+            ;;
+        5)
             clear
             draw_logo
             draw_plugin_menu
@@ -76,7 +95,7 @@ while true; do
                     ;;
             esac
             ;;
-        10)
+        6)
             clear
             draw_logo
             draw_theme_menu
@@ -102,7 +121,6 @@ while true; do
                     ;;
             esac
             ;;
-        11) clean_steamos ;;
         q)
             echo "Bye"
             exit 0
