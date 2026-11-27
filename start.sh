@@ -59,6 +59,8 @@ while true; do
                 4) opt_flatpaks ;;
                 5) opt_firewall ;;
                 6) opt_wireguard ;;
+                7) opt_nas-toggle ;;
+                8) create_desktop-shortcut ;;
                 b) continue ;;
                 q)
                     echo "Bye"

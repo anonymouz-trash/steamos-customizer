@@ -84,10 +84,10 @@ install_emudeck(){
 opt_wireguard(){
     clear
     draw_logo
-    echo -e "\n${white}[+] ${blue}Copy wireguard activate/deactivate script to ${apphome}/local/bin/wireguard-vpn${nocolor}\n"
-    if [ -f "${apphome}/.local/bin/wireguard-vpn" ]; then
+    echo -e "\n${white}[+] ${blue}Copy wireguard activate/deactivate script to ${app_home}/local/bin/wireguard-vpn${nocolor}\n"
+    if [ -f "${app_home}/.local/bin/wireguard-vpn" ]; then
         read -r -p 'WireGuard script already exists! Do you want to remove it? [y/N] ' input
-        if [[ "${input}" == "y" || "${input}" == "Y" ]]; then
+        if [[ "${input}" == "y" ]]; then
             # Bring the VPN down first if it is currently active
             if nmcli -t -f NAME connection show --active | grep -qxF "WireGuard VPN"; then
                 nmcli connection down id "WireGuard VPN"
@@ -100,16 +100,18 @@ opt_wireguard(){
                 echo -e "${white}[+] ${blue}No NetworkManager connection named 'WireGuard VPN' found${nocolor}"
             fi
             # Remove the toggle script
-            rm -v "${apphome}/.local/bin/wireguard-vpn"
+            rm -v "${app_home}/.local/bin/wireguard-vpn"
+            rm -v "${app_home}/.local/share/applications/wireguard-vpn.desktop"
+            rm -v "${app_home}/Desktop/wireguard-vpn.desktop"
             # Optionally remove the PATH line that the installer added to .bashrc
             path_line='export PATH="$HOME/.local/bin:$PATH"'
-            if grep -qxF "${path_line}" "${apphome}/.bashrc" 2>/dev/null; then
+            if grep -qxF "${path_line}" "${app_home}/.bashrc" 2>/dev/null; then
                 echo
                 read -r -p 'Also remove the ~/.local/bin PATH entry from .bashrc? [y/N] ' input
                 if [[ "${input}" == "y" || "${input}" == "Y" ]]; then
-                    cp "${apphome}/.bashrc" "${apphome}/.bashrc.bak"
-                    grep -vxF "${path_line}" "${apphome}/.bashrc.bak" > "${apphome}/.bashrc"
-                    echo -e "${white}[+] ${blue}PATH entry removed (backup: ${apphome}/.bashrc.bak)${nocolor}"
+                    cp "${app_home}/.bashrc" "${app_home}/.bashrc.bak"
+                    grep -vxF "${path_line}" "${app_home}/.bashrc.bak" > "${app_home}/.bashrc"
+                    echo -e "${white}[+] ${blue}PATH entry removed (backup: ${app_home}/.bashrc.bak)${nocolor}"
                 fi
             fi
         fi
@@ -120,17 +122,57 @@ opt_wireguard(){
         if [ -f ./import/wg0.conf ]; then
             nmcli connection import type wireguard file ./import/wg0.conf
             nmcli connection modify wg0 connection.id "WireGuard VPN"
-            mkdir -p "${apphome}/.local/bin"
-            cp -v ./assets/opt_wireguard-vpn.sh ${apphome}/.local/bin/wireguard-vpn
+            mkdir -p "${app_home}/.local/bin"
+            cp -v ./assets/opt_wireguard-vpn.sh ${app_home}/.local/bin/wireguard-vpn
+            cp -c ./assets/opt_wireguard-vpn.desktop ${app_home}/.local/share/applications
+            cp -c ./assets/opt_wireguard-vpn.desktop ${app_home}/Desktop
             # Make sure ~/.local/bin is in PATH for interactive shells
-            if ! grep -qs '\.local/bin' "${apphome}/.bashrc"; then
-                echo 'export PATH="$HOME/.local/bin:$PATH"' >> "${apphome}/.bashrc"
+            if ! grep -qs '\.local/bin' "${app_home}/.bashrc"; then
+                echo 'export PATH="$HOME/.local/bin:$PATH"' >> "${app_home}/.bashrc"
                 echo
-                echo -e "${white}[+] ${blue}Added ~/.local/bin to PATH in ${apphome}/.bashrc${nocolor}"
+                echo -e "${white}[+] ${blue}Added ~/.local/bin to PATH in ${app_home}/.bashrc${nocolor}"
             fi
         else
             echo
             echo -e "\n${red}[+] ${white}./import/wg0.conf not found! Start again.${nocolor}\n"
+        fi
+    fi
+    echo
+    read -p "Press any key to resume ..."
+}
+
+opt_nas-toggle(){
+    clear
+    draw_logo
+    echo -e "\n${white}[+] ${blue}Copy NFS share mount/unmount script to ${app_home}/.local/bin/nas-toggle${nocolor}\n"
+    if [ -f "${app_home}/.local/bin/nas-toggle" ]; then
+        read -r -p 'NFS share script already exists! Do you want to remove it? [y/N] ' input
+        if [[ "${input}" == "y" ]]; then
+            rm -v "${app_home}/.local/bin/nfs-toggle"
+            rm -v "${app_home}/.local/share/applications/nfs-toggle.desktop"
+            rm -v "${app_home}/Desktop/nfs-toggle.desktop"
+            # Optionally remove the PATH line that the installer added to .bashrc
+            path_line='export PATH="$HOME/.local/bin:$PATH"'
+            if grep -qxF "${path_line}" "${app_home}/.bashrc" 2>/dev/null; then
+                echo
+                read -r -p 'Also remove the ~/.local/bin PATH entry from .bashrc? [y/N] ' input
+                if [[ "${input}" == "y" || "${input}" == "Y" ]]; then
+                    cp "${app_home}/.bashrc" "${app_home}/.bashrc.bak"
+                    grep -vxF "${path_line}" "${app_home}/.bashrc.bak" > "${app_home}/.bashrc"
+                    echo -e "${white}[+] ${blue}PATH entry removed (backup: ${app_home}/.bashrc.bak)${nocolor}"
+                fi
+            fi
+        fi
+    else
+        mkdir -p "${app_home}/.local/bin"
+        cp -v ./assets/opt_nas-toggle.sh ${app_home}/.local/bin/nas-toggle
+        cp -c ./assets/opt_nas-toggle.desktop ${app_home}/.local/share/applications
+        cp -c ./assets/opt_nas-toggle.desktop ${app_home}/Desktop
+        # Make sure ~/.local/bin is in PATH for interactive shells
+        if ! grep -qs '\.local/bin' "${app_home}/.bashrc"; then
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "${app_home}/.bashrc"
+            echo
+            echo -e "${white}[+] ${blue}Added ~/.local/bin to PATH in ${app_home}/.bashrc${nocolor}"
         fi
     fi
     echo

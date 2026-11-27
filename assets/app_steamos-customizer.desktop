@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Steam Customizer
+GenericName=Steam Customizer
+Exec=konsole -e /home/deck/Projects/git/steamos-customizer/start.sh
+Icon=applications-utilities-symbolic
+Terminal=false
+Categories=Utility
+StartupNotify=false

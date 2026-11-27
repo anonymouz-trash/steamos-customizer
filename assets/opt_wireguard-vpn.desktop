@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WireGuard VPN
+GenericName=VPN Toggle
+Comment=Toggle the WireGuard VPN connection on or off
+Comment[de]=WireGuard-VPN-Verbindung ein- oder ausschalten
+Exec=${apphome}/.local/bin/wireguard-vpn
+Icon=network-vpn
+Terminal=false
+Categories=Network;Security;
+Keywords=wireguard;vpn;network;toggle;
+StartupNotify=false
+Actions=up;down;
+
+[Desktop Action up]
+Name=Connect
+Name[de]=Verbinden
+Exec=nmcli connection up id "WireGuard VPN"
+
+[Desktop Action down]
+Name=Disconnect
+Name[de]=Trennen
+Exec=nmcli connection down id "WireGuard VPN"

@@ -36,6 +36,8 @@ Just clone the repo and run it like below at any preferred location you want.
 * FIX:    Flatpak installation routine (use single words or app ids)
 * UPDATE: Replacing wireguard routine by adding wg0.conf to NetworkManager with the same script functionality for use as hotkey
 * ADD:    Add GyroDSU server installation for the Steam Deck & Steam Controller (install all 3 services if you have a Steam Controller)
+* ADD:    Add wireguard desktop files to ~/Desktop & ~/.local/share/applications for better use as handheld in desktop mode
+* ADD:    Add NFS share toggle script & desktop file
 
 # Screenshots
 ![SteamOS Customizer - Main Menu](https://github.com/anonymouz-trash/steamos-customizer/blob/main/screenshots/mainmenu.png?raw=true)

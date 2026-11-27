@@ -78,6 +78,9 @@ draw_system_menu() {
 
   5) Install firewall-cmd ruleset (for WLAN & Wireguard)
   6) Add Wireguard config to NetworkManager (+ start/stop script)
+  7) Add NFS share toggle script & shortcuts
+
+  8) Create desktop shortcut for Steam Customizer
 
   b) Back
   q) Exit

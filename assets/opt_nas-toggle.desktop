@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=NAS mount/unmount
+Name[de]=NAS ein-/aushängen
+GenericName=NFS share toggle
+GenericName[de]=NFS-Freigabe umschalten
+Comment=Mount or unmount the NAS NFS share at ~/nas
+Comment[de]=NFS-Freigabe der NAS unter ~/nas einhängen oder aushängen
+Exec=/home/deck/.local/bin/nas-toggle
+Icon=folder-remote
+Terminal=false
+Categories=Utility;System;FileTools;
+Keywords=nas;nfs;mount;unmount;share;network;
+StartupNotify=false

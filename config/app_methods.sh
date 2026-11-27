@@ -85,3 +85,23 @@ enable_sudo(){
     echo
     read -p "Press any key to resume ..."
 }
+
+create_desktop-shortcut(){
+    clear
+    draw_logo
+    echo -e "\n${white}[+] ${blue}Create desktop & start menu shortcut for SteamOS-Customizer...${nocolor}\n"
+    if [ -f ${app_home}/.local/share/applications/steamos-customizer.desktop ]; then
+        echo
+        read -p 'Shortcuts already exists. Do you want to delete them? [y/N] ' input
+        if [[ ${input} == "y" ]]; then
+            rm -fv ${app_home}/.local/share/applications/steamos-customizer.desktop
+            rm -fv ${app_home}/Desktop/steamos-customizer.desktop
+        fi
+    else
+        sed -i "s|^Exec=.*|Exec=konsole -e ${app_pwd}/start.sh|" ./assets/app_steamos-customizer.desktop
+        cp -v ./assets/app_steamos-customizer.desktop ${app_home}/.local/share/applications/steamos-customizer.desktop
+        cp -v ./assets/app_steamos-customizer.desktop ${app_home}/Desktop/steamos-customizer.desktop
+    fi
+    echo
+    read -p "Press any key to resume ..."
+}
