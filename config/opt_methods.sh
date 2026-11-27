@@ -182,17 +182,12 @@ opt_nas-toggle(){
 opt_firewall(){
     clear
     draw_logo
-    echo -e "\n${white}[+] ${blue}Add preconfigured iptables ruleset script to /etc/iptables...${nocolor}\n"
-    FW="sudo firewall-cmd --permanent"
-    # --- Default zone (replaces INPUT policy DROP) ---------------------------
-    # All interfaces without an explicit zone (wlan0, enp2s0) land in "drop":
-    # incoming traffic is dropped, replies to outgoing connections are still
-    # allowed via connection tracking (ESTABLISHED,RELATED).
-    $FW --set-default-zone=drop
-    # --- WireGuard (replaces: -A INPUT/OUTPUT -i/-o wg0 -j ACCEPT) -----------
-    $FW --new-zone=vpn
-    $FW --zone=vpn --set-target=ACCEPT
-    $FW --zone=vpn --add-interface=wg0
+    echo -e "\n${white}[+] ${blue}Add preconfigured firewalld ruleset ...${nocolor}\n"
+    sudo firewall-cmd --set-default-zone=drop
+    sudo firewall-cmd --zone=drop --add-interface=lo --permanent
+    sudo firewall-cmd --zone=public --add-interface=wg0 --permanent
+    sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.178.0/24" port port="3389" protocol="tcp" accept'
+    sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" port port="22000" protocol="tcp" accept'
     firewall-cmd --reload
     echo
     read -p "Press any key to resume ..."
