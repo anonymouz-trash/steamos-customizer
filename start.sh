@@ -32,6 +32,10 @@ if ! [[ "${system_os}" == "SteamOS" ]]; then
     echo -e "${red}Use at your own risk!${nocolor}"
 fi
 
+if check_update; then
+    echo -e "                           ${white}-${red} script update availabe ${white}-${nocolor}"
+fi
+
 while true; do
     clear
     # Check if steamos-customizer cache directory exists
@@ -39,9 +43,6 @@ while true; do
         mkdir -p ~/.cache/steamos-customizer
     fi
     draw_logo
-    if check_update; then
-        echo -e "                           ${white}-${red} script update availabe ${white}-${nocolor}"
-    fi
     draw_menu
     read -rp "Choice: " choice
 
