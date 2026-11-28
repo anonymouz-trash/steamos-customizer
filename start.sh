@@ -39,7 +39,7 @@ while true; do
         mkdir -p ~/.cache/steamos-customizer
     fi
     draw_logo
-    if [[ "${update_needed}" -eq "1" ]]; then
+    if check_update; then
         echo -e "                           ${white}-${red} script update availabe ${white}-${nocolor}"
     fi
     draw_menu
