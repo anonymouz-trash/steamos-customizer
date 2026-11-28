@@ -32,6 +32,14 @@ else
     system_os="Something else (use at your own risk)"
 fi
 
+git fetch origin
+
+if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/$(git branch --show-current))" ]; then
+    update_needed=1
+else
+    update_needed=0
+fi
+
 draw_logo() {
     echo -e "${blue}"
     cat << "EOF"
